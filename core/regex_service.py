@@ -9,7 +9,13 @@ from core.repositories import ResultRepository
 
 
 
-PATTERN = r'https?://[\w.-]+(?:\.[\w.-]+)*(?:[/?#][^\s]*)?'
+PATTERN = r'https?:\/\/[^\s"<>]+'
+# 1. https?        - Начало URL: может быть "http" или "https"
+# 2. :\/\/         - Обязательный элемент URL: последовательность "://"
+# 3. [^\s"<>]+     - Основная часть URL:
+#    [^\s"<>]    - Любые символы, кроме пробелов (`\s`), кавычек (`"`) и угловых скобок (`<>`).
+#    +           - Один или более символов из допустимого набора.
+
 
 class RegexService:
     def __init__(self, result_repository: ResultRepository):
@@ -40,7 +46,6 @@ class RegexService:
 
     def get_urls_in_text(self, text: str = "") -> List[str]:
         urls = self._find_urls(text)
-        self.result_repository.add(Result(link='text', urls=urls))
         return urls
 
 

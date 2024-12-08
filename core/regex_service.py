@@ -2,17 +2,18 @@ from dataclasses import asdict
 import json
 import re
 from typing import List
-
 from requests import RequestException, get
-from models import Result
-from repositories import ResultRepository
+
+from core.models import Result
+from core.repositories import ResultRepository
+
+
 
 PATTERN = r'https?://[\w.-]+(?:\.[\w.-]+)*(?:[/?#][^\s]*)?'
 
 class RegexService:
     def __init__(self, result_repository: ResultRepository):
         self.result_repository = result_repository
-        pass
 
     def _find_urls(self, text: str) -> List[str]:
         return re.findall(PATTERN, text)

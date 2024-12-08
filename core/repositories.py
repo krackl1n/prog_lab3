@@ -16,7 +16,7 @@ class ResultRepository(ABC):
         pass
 
 class JsonResultRepository(ResultRepository):
-    def __init__(self, file_path: str = "results.json"):
+    def __init__(self, file_path: str = "urls.json"):
         self.file_path = file_path
 
     def _load_result_from_file(self) -> List[Result]:

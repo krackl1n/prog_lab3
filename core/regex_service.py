@@ -7,7 +7,7 @@ from requests import RequestException, get
 from models import Result
 from repositories import ResultRepository
 
-PATTERN = r''
+PATTERN = r'https?://[\w.-]+(?:\.[\w.-]+)*(?:[/?#][^\s]*)?'
 
 class RegexService:
     def __init__(self, result_repository: ResultRepository):

@@ -25,7 +25,7 @@ class JsonResultRepository(ResultRepository):
                 data = f.read().strip() 
                 if not data: 
                     return []
-                return [Result(**record) for record in json.loads(data)]
+                return [Result(**result) for result in json.loads(data)]
         except FileNotFoundError:
             return []
         except json.JSONDecodeError as e:

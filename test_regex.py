@@ -1,7 +1,7 @@
 import re
 import unittest
 
-PATTERN = r'https?:\/\/[^\s"<>]+'
+from core.regex_service import PATTERN
 
 
 class TestRegexHyperlinks(unittest.TestCase):
